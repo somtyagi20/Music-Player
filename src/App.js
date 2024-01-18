@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Sidebar from "./components/sidebar.js";
+import Feed from "./components/feed.js";
+import Trending from "./components/trending.js";
+import Library from "./components/library.js";
+import Player from "./components/player.js";
+import Favorite from "./components/favorite.js";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={<Feed />} />
+          <Route path="/trending" element={<Trending />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/player" element={<Player />} />
+          <Route path="/favorite" element={<Favorite />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
 export default App;
+//box-sizing:border-box is a css property that makes the padding and
+//border of an element included in the width and height of the element
