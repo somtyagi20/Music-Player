@@ -13,21 +13,19 @@ export default function Sidebar() {
     <div className="sidebar-container">
       <img src={profile} className="profile-picture" alt="profile_picture" />
       <div className="sidebar-btns">
-        <div className="sidebar-btn">
-          <SidebarButton icon={<MdSpaceDashboard />} title="Feed" to={"/"} />
-          <SidebarButton
-            icon={<FaGripfire />}
-            title="Trending"
-            to={"/trending"}
-          />
-          <SidebarButton icon={<FaPlay />} title="Player" to={"/player"} />
-          <SidebarButton
-            icon={<MdFavorite />}
-            title="Favourite"
-            to={"/favorite"}
-          />
-          <SidebarButton icon={<IoLibrary />} title="Library" to={"/library"} />
-        </div>
+        <SidebarButton icon={<MdSpaceDashboard />} title="Feed" to={"/"} />
+        <SidebarButton
+          icon={<FaGripfire />}
+          title="Trending"
+          to={"/trending"}
+        />
+        <SidebarButton icon={<FaPlay />} title="Player" to={"/player"} />
+        <SidebarButton
+          icon={<MdFavorite />}
+          title="Favourite"
+          to={"/favorite"}
+        />
+        <SidebarButton icon={<IoLibrary />} title="Library" to={"/library"} />
       </div>
       <SidebarButton icon={<FaSignOutAlt />} title="Logout" to={"/logout"} />
       {/* <div className="sidebar-btns">
