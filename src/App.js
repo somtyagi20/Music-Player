@@ -9,10 +9,10 @@ import Player from "./components/player.js";
 import Favorite from "./components/favorite.js";
 import Login from "./components/login.js";
 import { useState, useEffect } from "react";
+import { setClientToken } from "./spotify.js";
 
 function App() {
   const [token, setToken] = useState("");
-
   useEffect(() => {
     const token = window.localStorage.getItem("token");
     const hash = window.location.hash;
@@ -20,8 +20,10 @@ function App() {
       const _token = hash.split("&")[0].split("=")[1];
       window.localStorage.setItem("token", _token);
       setToken(_token);
+      setClientToken(_token);
     } else {
       setToken(token);
+      setClientToken(token);
     }
   }, []);
   return !token ? (

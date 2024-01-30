@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./styles/sidebar.css";
 import profile from "../assets/my_profile.png";
 import { MdFavorite } from "react-icons/md";
@@ -7,11 +7,18 @@ import { IoLibrary } from "react-icons/io5";
 import { FaSignOutAlt } from "react-icons/fa";
 import { MdSpaceDashboard } from "react-icons/md";
 import SidebarButton from "./sidebar-btn.js";
+import apiClient from "../spotify.js";
 
 export default function Sidebar() {
+  const [image, setImage] = useState(profile);
+  useEffect(() => {
+    apiClient.get("me").then((response) => {
+      setImage(response.data.images[0].url);
+    });
+  }, []);
   return (
     <div className="sidebar-container">
-      <img src={profile} className="profile-picture" alt="profile_picture" />
+      <img src={image} className="profile-picture" alt="profile_picture" />
       <div className="sidebar-btns">
         <SidebarButton icon={<MdSpaceDashboard />} title="Feed" to={"/"} />
         <SidebarButton
